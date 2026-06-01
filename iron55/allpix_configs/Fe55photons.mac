@@ -1,0 +1,26 @@
+#Configuration for the Fe 55 source
+# Done as two different sources, of different intensity to match the decay probability # Let's make them point sources, for now
+# Source 1
+# 5.9 keV, in 24.4% of decays. This is normalised to intensity 1 by default 
+
+/gps/source/intensity 24.4
+/gps/particle gamma 
+/gps/pos/type Point 
+/gps/pos/centre 0 0 -0.5 mm 
+/gps/ene/mono 5.9 keV 
+/gps/ang/type iso
+# Theta: 90 to 180 degrees is "forward", such as it is set up now 
+/gps/ang/mintheta 177.5 deg
+/gps/ang/maxtheta 180 deg
+# 160-180
+# No need to change phi, keep it isotropic there
+# Source 2, in the same position # 6.5 keV, in 2.85% of decays 
+
+/gps/source/add 2.85 
+/gps/particle gamma 
+/gps/pos/type Point 
+/gps/pos/centre 0 0 -0.5 mm 
+/gps/ene/mono 6.5 keV 
+/gps/ang/type iso 
+/gps/ang/mintheta 177.5 deg 
+/gps/ang/maxtheta 180 deg
