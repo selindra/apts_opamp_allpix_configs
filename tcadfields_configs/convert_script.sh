@@ -6,12 +6,14 @@
 #########Change the dat/grd file name accordingly
 
 DIR=
-
+DIRWP=
 source /cvmfs/clicdp.cern.ch/software/allpix-squared/latest/x86_64-el9-clang16-opt/setup.sh 
-
-mesh_converter -c dop_convert.conf -f $DIR
 mesh_converter -c convert.conf -f $DIR
-
-mesh_plotter -f  {$DIR}_DopingConcentration.apf -s
-mesh_plotter -f  {$DIR}_ElectricField.apf
+mesh_converter -c dop_convert.conf -f $DIR
+mesh_converter -c ./wp_calc/wp_calc_convert.conf -f $DIR
+mesh_converter -c ./wp_calc/wp_calc_convert.conf -f $DIRWP 
+python3 ./wp_calc/calc.py "${DIR}_ElectrostaticPotential.init" "${DIRWP}_ElectrostaticPotential.init"
+mesh_plotter -f ${DIR}_ElectricField.apf
+mesh_plotter -f ${DIR}_DopingConcentration.apf -s
+mesh_plotter -f wp_${DIR}_ElectrostaticPotential.init -s
 
